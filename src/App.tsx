@@ -18,38 +18,40 @@ export const App: FC<IAppProps> = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path='/' element={<HomePage />} />
-				<Route
-					path={routes.ABOUT_PAGE.ABOUT_INSPECTION}
-					element={<AboutInspection />}
-				/>
-				<Route
-					path={routes.ABOUT_PAGE.INSPECTION_SCHEDULE}
-					element={<InspectionSchedule />}
-				/>
-				<Route
-					path={routes.ABOUT_PAGE.AREAS_SCHEDULE}
-					element={<AreasSchedule />}
-				/>
+				<Route path='/' element={<LayoutComponent />}>
+					<Route index element={<HomePage />} />
+					<Route
+						path={routes.ABOUT_PAGE.ABOUT_INSPECTION}
+						element={<AboutInspection />}
+					/>
+					<Route
+						path={routes.ABOUT_PAGE.INSPECTION_SCHEDULE}
+						element={<InspectionSchedule />}
+					/>
+					<Route
+						path={routes.ABOUT_PAGE.AREAS_SCHEDULE}
+						element={<AreasSchedule />}
+					/>
 
-				<Route
-					path={routes.ABOUT_PAGE.LEGISLATION}
-					element={<Legislation />}
-				/>
+					<Route
+						path={routes.LEGISLATION}
+						element={<Legislation />}
+					/>
 
-				<Route path={routes.NEWS_PAGE} element={<LayoutComponent />}>
-					<Route index element={<NewsPage />} />
-					<Route path=':id' element={<DetailNews />} />
+					<Route path={routes.NEWS_PAGE}>
+						<Route index element={<NewsPage />} />
+						<Route path=':id' element={<DetailNews />} />
+					</Route>
+
+					<Route
+						path={routes.APPEAL_FINE_PAGE}
+						element={<AppealFinePage />}
+					/>
+					<Route
+						path={routes.CONTACTS_PAGE}
+						element={<ContactPage />}
+					/>
 				</Route>
-
-				<Route
-					path={routes.APPEAL_FINE_PAGE}
-					element={<AppealFinePage />}
-				/>
-				<Route
-					path={routes.CONTACTS_PAGE}
-					element={<ContactPage />}
-				/>
 			</Routes>
 		</BrowserRouter>
 	)

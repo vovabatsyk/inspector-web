@@ -1,7 +1,10 @@
 export const COLORS = {
-	white: '#fff'
+	white: '#fff',
+	black: '#000',
+	primary: '#071f32',
+	secondary: '#1e87f0'
 }
 
 export const SIZES = {
-	margin: '10px'
+	padding: 10
 }

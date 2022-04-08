@@ -1,12 +1,20 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Footer } from '../Footer'
+import { Header } from '../Header'
+import { MainLayout } from './MainLayout'
 
 type Props = {}
 
 export const LayoutComponent = (props: Props) => {
-  return (
-    <div style={{border: 2, padding: 5, margin: 5, borderColor: '#000', borderStyle: 'dashed', width: 500, height: 500}}>
-        <Outlet />
-    </div>
-  )
+	return (
+		<div
+			style={{
+				height: 2000
+			}}
+		>
+			<Header />
+			<MainLayout />
+			<Footer />
+		</div>
+	)
 }
