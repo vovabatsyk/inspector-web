@@ -1,9 +1,7 @@
-import React from 'react'
-
 type Props = {}
 
 export const ContactPage = (props: Props) => {
-  return (
-    <div>ContactPage</div>
-  )
+	return <h1>Contacts</h1>
 }
+
+const LogosWrapper = {}

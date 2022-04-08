@@ -10,23 +10,16 @@ export const Header = (props: Props) => {
 		<Navbar
 			collapseOnSelect
 			expand='lg'
-			// bg='primary'
 			variant='dark'
 			fixed='top'
 			style={{ backgroundColor: COLORS.primary }}
 		>
 			<Container>
-				{/* <Navbar.Brand href='#home'>
-					<Image src={Logo} width='30px' />
-				</Navbar.Brand> */}
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 				<Navbar.Collapse id='responsive-navbar-nav'>
 					<Nav className='me-auto'>
 						<Nav.Link as={Link} to={routes.HOME_PAGE}>
 							Головна
-						</Nav.Link>
-						<Nav.Link as={Link} to={routes.NEWS_PAGE}>
-							Новини
 						</Nav.Link>
 						<NavDropdown
 							title='Про інспекцію'
@@ -60,10 +53,13 @@ export const Header = (props: Props) => {
 						<Nav.Link as={Link} to={routes.LEGISLATION}>
 							Оскаржити штраф
 						</Nav.Link>
-					</Nav>
-					<Nav>
 						<Nav.Link as={Link} to={routes.CONTACTS_PAGE}>
 							Контакти
+						</Nav.Link>
+					</Nav>
+					<Nav>
+						<Nav.Link as={Link} to={routes.NEWS_PAGE}>
+							Новини
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>

@@ -14,7 +14,6 @@ export const LayoutComponent = (props: Props) => {
 		>
 			<Header />
 			<MainLayout />
-			<Footer />
 		</div>
 	)
 }
