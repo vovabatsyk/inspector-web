@@ -2,8 +2,11 @@ import { Layout, Row, Col, Button } from 'antd'
 import React, { FC } from 'react'
 import { COLORS, SIZES } from '../constants/theme'
 import { CreditCardOutlined } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
+import { routesName } from '../routes'
 
 export const PayViolation: FC = () => {
+	const navigate = useNavigate()
 	return (
 		<Layout.Content
 			style={{
@@ -26,7 +29,16 @@ export const PayViolation: FC = () => {
 						Якщо ви отримали квитанцію за неправильне паркування, ви
 						можете сплатити штраф онлайн
 					</p>
-					<Button type='primary'>Реквізити</Button>
+					<Button
+						type='primary'
+						style={{ backgroundColor: COLORS.secondary }}
+						onClick={() => {
+							navigate(routesName.PAYMENT_DETAILS)
+							window.scrollTo({ behavior: 'smooth', top: 0 })
+						}}
+					>
+						Реквізити
+					</Button>
 				</Col>
 			</Row>
 		</Layout.Content>

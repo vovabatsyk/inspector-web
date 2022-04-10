@@ -39,4 +39,7 @@ p {
     h2 {
       font-size: 14px;
   }
+.ant-table-cell {
+  font-size: 10px;
+}
 }

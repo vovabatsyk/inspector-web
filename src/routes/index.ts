@@ -1,3 +1,4 @@
+import { PaymentDetails } from './../pages/PaymentDetails'
 import { Legislation } from './../pages/About/Legislation'
 import { ContactPage } from './../pages/Contacts/index'
 import { AppealFinePage } from './../pages/AppealFine'
@@ -21,7 +22,8 @@ export enum routesName {
     APPEAL_FINE_PAGE = 'appeal-fine',
     CONTACTS_PAGE = 'contacts',
     NEWS_PAGE = 'news',
-    LEGISLATION = 'legislation'
+    LEGISLATION = 'legislation',
+    PAYMENT_DETAILS = 'payment-details',
 }
 
 export const publicRoutes: IRoute[] = [
@@ -32,4 +34,5 @@ export const publicRoutes: IRoute[] = [
     { path: routesName.APPEAL_FINE_PAGE, element: AppealFinePage },
     { path: routesName.CONTACTS_PAGE, element: ContactPage },
     { path: routesName.LEGISLATION, element: Legislation },
+    { path: routesName.PAYMENT_DETAILS, element: PaymentDetails },
 ]
