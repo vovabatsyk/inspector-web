@@ -49,6 +49,9 @@ export const Footer = (props: Props) => {
 						<Link
 							to={routesName.ABOUT_INSPECTION}
 							style={styles.primaryLink}
+							onClick={() =>
+								window.scrollTo({ behavior: 'smooth', top: 0 })
+							}
 						>
 							Про інспекцію
 						</Link>
@@ -57,6 +60,9 @@ export const Footer = (props: Props) => {
 						<Link
 							to={routesName.INSPECTION_SCHEDULE}
 							style={styles.primaryLink}
+							onClick={() =>
+								window.scrollTo({ behavior: 'smooth', top: 0 })
+							}
 						>
 							Графік роботи інспекції
 						</Link>
@@ -65,6 +71,9 @@ export const Footer = (props: Props) => {
 						<Link
 							to={routesName.AREAS_SCHEDULE}
 							style={styles.primaryLink}
+							onClick={() =>
+								window.scrollTo({ behavior: 'smooth', top: 0 })
+							}
 						>
 							Графік роботи штрафмайданчика
 						</Link>
@@ -73,6 +82,9 @@ export const Footer = (props: Props) => {
 						<Link
 							to={routesName.LEGISLATION}
 							style={styles.primaryLink}
+							onClick={() =>
+								window.scrollTo({ behavior: 'smooth', top: 0 })
+							}
 						>
 							Нормативна база
 						</Link>
