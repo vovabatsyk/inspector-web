@@ -11,15 +11,6 @@ export const SearchViolation: FC = () => {
 	const [carNumber, setCarNumber] = useState('')
 	const [violationNumber, setViolationNumber] = useState('')
 
-	const onFinish = (values: any) => {
-		console.log('Success:', values)
-		setViolationIsAvailable(true)
-	}
-
-	const onFinishFailed = (errorInfo: any) => {
-		console.log('Failed:', errorInfo)
-	}
-
 	return (
 		<Row
 			justify='center'
