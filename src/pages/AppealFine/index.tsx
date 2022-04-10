@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 type Props = {}
 
-export const AppealFinePage = (props: Props) => {
-  return (
-    <div>AppealFinePage</div>
-  )
+export const AppealFinePage: FC = (props: Props) => {
+	return <div>AppealFinePage</div>
 }

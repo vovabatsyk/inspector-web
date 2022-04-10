@@ -1,82 +1,77 @@
-import { Nav, NavDropdown, Container, Navbar } from 'react-bootstrap'
+import { Col, Image, Layout, Menu, Row } from 'antd'
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { routes } from '../../constants/routes'
-import { COLORS } from '../../constants/styles'
-import { MainInfoHeader } from '../MainInfoHeader'
+import { COLORS, SIZES } from '../../constants/theme'
+import { routesName } from '../../routes'
+import DepartmentLogo from '../../assets/logo.png'
+import { styles } from '../../constants/style'
 
 type Props = {}
 
-export const Header = (props: Props) => {
+export const Header: FC = (props: Props) => {
 	return (
-		<div style={{ position: 'fixed', top: 0, right: 0, left: 0 }}>
-			<MainInfoHeader />
-			<div
-				style={{
-					borderBottomWidth: 1,
-					borderColor: COLORS.fontColorLight,
-					borderBottomStyle: 'solid'
-				}}
+		<Layout style={styles.primaryBgContainer}>
+			<Row
+				justify='center'
+				align='middle'
+				style={{ marginTop: SIZES.margin }}
 			>
-				<Navbar
-					collapseOnSelect={true}
-					expand='lg'
-					variant='light'
-					style={{ backgroundColor: COLORS.gray }}
-					className='menu'
+				<Col>
+					<Image src={DepartmentLogo} width={70} />
+				</Col>
+				<Col style={{ paddingLeft: SIZES.padding }}>
+					<p>
+						Департамент міської мобільності та вуличної інфраструктури
+					</p>
+
+					<p>Управління безпеки</p>
+
+					<p>Львівської міської ради</p>
+				</Col>
+			</Row>
+			<Layout.Header style={{ backgroundColor: COLORS.primary }}>
+				<Menu
+					theme='dark'
+					mode='horizontal'
+					selectable={false}
+					style={{ backgroundColor: COLORS.primary }}
 				>
-					<Container>
-						<Navbar.Brand href='#home'></Navbar.Brand>
-						<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-						<Navbar.Collapse id='responsive-navbar-nav'>
-							<Nav className='me-auto'>
-								<Nav.Link as={Link} to={routes.HOME_PAGE}>
-									Головна
-								</Nav.Link>
-								<NavDropdown
-									title='Про інспекцію'
-									id='collasible-nav-dropdown'
-								>
-									<NavDropdown.Item
-										as={Link}
-										to={routes.ABOUT_PAGE.ABOUT_INSPECTION}
-									>
-										Про інспекцію
-									</NavDropdown.Item>
-									<NavDropdown.Item
-										as={Link}
-										to={routes.ABOUT_PAGE.INSPECTION_SCHEDULE}
-									>
-										Графік роботи інспекції
-									</NavDropdown.Item>
-									<NavDropdown.Item
-										as={Link}
-										to={routes.ABOUT_PAGE.AREAS_SCHEDULE}
-									>
-										Графік роботи штрафмайданчика
-									</NavDropdown.Item>
-									<NavDropdown.Item
-										as={Link}
-										to={routes.APPEAL_FINE_PAGE}
-									>
-										Нормативна база
-									</NavDropdown.Item>
-								</NavDropdown>
-								<Nav.Link as={Link} to={routes.LEGISLATION}>
-									Оскаржити штраф
-								</Nav.Link>
-								<Nav.Link as={Link} to={routes.CONTACTS_PAGE}>
-									Контакти
-								</Nav.Link>
-							</Nav>
-							<Nav>
-								<Nav.Link as={Link} to={routes.NEWS_PAGE}>
-									Новини
-								</Nav.Link>
-							</Nav>
-						</Navbar.Collapse>
-					</Container>
-				</Navbar>
-			</div>
-		</div>
+					<Menu.Item key={1}>
+						<Link to={routesName.HOME_PAGE}>Головна</Link>
+					</Menu.Item>
+					<Menu.SubMenu key={2} title='Про інспекцію'>
+						<Menu.Item key={21}>
+							<Link to={routesName.ABOUT_INSPECTION}>
+								Про інспекцію
+							</Link>
+						</Menu.Item>
+						<Menu.Item key={22}>
+							<Link to={routesName.INSPECTION_SCHEDULE}>
+								Графік роботи інспекції
+							</Link>
+						</Menu.Item>
+						<Menu.Item key={23}>
+							<Link to={routesName.AREAS_SCHEDULE}>
+								Графік роботи штрафмайданчика
+							</Link>
+						</Menu.Item>
+						<Menu.Item key={24}>
+							<Link to={routesName.LEGISLATION}>Нормативна база</Link>
+						</Menu.Item>
+					</Menu.SubMenu>
+					<Menu.Item key={3}>
+						<Link to={routesName.APPEAL_FINE_PAGE}>
+							Оскаржити штраф
+						</Link>
+					</Menu.Item>
+					<Menu.Item key={4}>
+						<Link to={routesName.CONTACTS_PAGE}>Контакти</Link>
+					</Menu.Item>
+					<Menu.Item key={5}>
+						<Link to={routesName.NEWS_PAGE}>Новини</Link>
+					</Menu.Item>
+				</Menu>
+			</Layout.Header>
+		</Layout>
 	)
 }
