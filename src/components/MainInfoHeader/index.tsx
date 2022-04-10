@@ -1,5 +1,5 @@
 import React from 'react'
-import { COLORS, SIZES } from '../../constants/styles'
+import { COLORS, SIZES } from '../../constants/theme'
 import DepartmentLogo from '../../assets/logo.png'
 import { Image } from 'react-bootstrap'
 

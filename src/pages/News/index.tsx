@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 type Props = {}
 
-export const NewsPage = (props: Props) => {
-  return (
-    <div>NewsPage</div>
-  )
+export const NewsPage: FC = (props: Props) => {
+	return <div>NewsPage</div>
 }
