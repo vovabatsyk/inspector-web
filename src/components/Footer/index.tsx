@@ -1,7 +1,7 @@
-import { Col, Layout, Row, Image } from 'antd'
+import { Col, Layout, Row, Image, Button } from 'antd'
 import { SIZES } from '../../constants/theme'
 import { routesName } from '../../routes'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import DepartmentLogo from '../../assets/logo.png'
 import LMRLogo from '../../assets/lmr_logo.png'
 import { styles } from '../../constants/style'
@@ -15,7 +15,11 @@ export const Footer = (props: Props) => {
 				<Col style={{ padding: SIZES.padding }}>
 					<Row justify='center'>
 						<Col style={{ paddingRight: SIZES.padding }}>
-							<Image src={DepartmentLogo} width={70} />
+							<Image
+								src={DepartmentLogo}
+								width={70}
+								preview={false}
+							/>
 						</Col>
 						<Col>
 							<p>
@@ -38,13 +42,16 @@ export const Footer = (props: Props) => {
 					</Row>
 				</Col>
 				<Col style={{ padding: SIZES.padding }}>
-					<Image src={LMRLogo} height={100} />
+					<Image src={LMRLogo} height={70} preview={false} />
 				</Col>
 				<Col style={{ padding: SIZES.padding }}>
 					<Row justify='start'>
 						<Link
 							to={routesName.ABOUT_INSPECTION}
 							style={styles.primaryLink}
+							onClick={() =>
+								window.scrollTo({ behavior: 'smooth', top: 0 })
+							}
 						>
 							Про інспекцію
 						</Link>
@@ -53,6 +60,9 @@ export const Footer = (props: Props) => {
 						<Link
 							to={routesName.INSPECTION_SCHEDULE}
 							style={styles.primaryLink}
+							onClick={() =>
+								window.scrollTo({ behavior: 'smooth', top: 0 })
+							}
 						>
 							Графік роботи інспекції
 						</Link>
@@ -61,6 +71,9 @@ export const Footer = (props: Props) => {
 						<Link
 							to={routesName.AREAS_SCHEDULE}
 							style={styles.primaryLink}
+							onClick={() =>
+								window.scrollTo({ behavior: 'smooth', top: 0 })
+							}
 						>
 							Графік роботи штрафмайданчика
 						</Link>
@@ -69,6 +82,9 @@ export const Footer = (props: Props) => {
 						<Link
 							to={routesName.LEGISLATION}
 							style={styles.primaryLink}
+							onClick={() =>
+								window.scrollTo({ behavior: 'smooth', top: 0 })
+							}
 						>
 							Нормативна база
 						</Link>
