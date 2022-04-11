@@ -1,10 +1,10 @@
-import { Col, Layout, Row, Image, Button } from 'antd'
-import { SIZES } from '../../constants/theme'
-import { routesName } from '../../routes'
-import { Link, useNavigate } from 'react-router-dom'
-import DepartmentLogo from '../../assets/logo.png'
-import LMRLogo from '../../assets/lmr_logo.png'
-import { styles } from '../../constants/style'
+import { Col, Layout, Row, Image } from 'antd'
+import { SIZES } from '../constants/theme'
+import { routesName } from '../routes'
+import { Link } from 'react-router-dom'
+import DepartmentLogo from '../assets/logo.png'
+import LMRLogo from '../assets/lmr_logo.png'
+import { styles } from '../constants/style'
 
 type Props = {}
 

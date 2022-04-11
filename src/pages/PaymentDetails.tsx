@@ -1,4 +1,4 @@
-import { Table, Card, Button, Row } from 'antd'
+import { Table, Card, Row } from 'antd'
 import { FC } from 'react'
 import { COLORS, SIZES, STYLES } from '../constants/theme'
 import { PrinterOutlined } from '@ant-design/icons'

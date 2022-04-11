@@ -11,6 +11,7 @@ export const COLORS = {
 
 export const SIZES = {
 	padding: 10,
+	paddingTextPage: 30,
 	margin: 10,
 	marginVertical: 20,
 }
