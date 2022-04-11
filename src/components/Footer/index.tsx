@@ -28,14 +28,14 @@ export const Footer = (props: Props) => {
 							</p>
 							<p>Управління безпеки Львівської міської ради</p>
 							<p>
-								<small>Адреса: вул. Зелена 9</small>
+								<small>Адреса: 79008, вул. Зелена 9</small>
 							</p>
 							<p>
-								<small>Телефон: (068) 000-00-00</small>
+								<small>Телефон: (063) 486-64-48</small>
 							</p>
 							<p>
 								<small>
-									Електронна пошта: parkingcontrol@gmail.com
+									Електронна пошта: dep.secur.city@gmail.com
 								</small>
 							</p>
 						</Col>

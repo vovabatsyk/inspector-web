@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 type Props = {}
 
-export const AboutInspection = (props: Props) => {
-  return (
-    <div>AboutPage</div>
-  )
+export const AboutInspection: FC = (props: Props) => {
+	return <div>AboutPage</div>
 }

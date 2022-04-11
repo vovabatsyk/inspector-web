@@ -1,9 +1,9 @@
 import { PaymentDetails } from './../pages/PaymentDetails'
 import { Legislation } from './../pages/About/Legislation'
-import { ContactPage } from './../pages/Contacts/index'
-import { AppealFinePage } from './../pages/AppealFine'
+import { ContactPage } from '../pages/Contacts'
+import { AppealFinePage } from '../pages/AppealFine'
 import { InspectionSchedule } from './../pages/About/InspectionSchedule'
-import { HomePage } from './../pages/Home/index'
+import { HomePage } from '../pages/Home'
 import { ComponentType } from "react"
 import { AboutInspection } from '../pages/About/AboutInspection'
 import { AreasSchedule } from '../pages/About/AreasSchedule'

@@ -2,6 +2,7 @@ import { Table, Card, Button, Row } from 'antd'
 import { FC } from 'react'
 import { COLORS, SIZES, STYLES } from '../constants/theme'
 import { PrinterOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 
 const columns = [
 	{
@@ -75,13 +76,20 @@ export const PaymentDetails: FC = () => {
 				align='middle'
 				style={{ marginBottom: SIZES.marginVertical }}
 			>
-				<Button
-					type='primary'
-					style={{ backgroundColor: COLORS.secondary }}
-					icon={<PrinterOutlined />}
+				<Link
+					to='/files/receipt.pdf'
+					target='_blank'
+					download
+					style={{
+						backgroundColor: COLORS.secondary,
+						color: COLORS.fontColorLight,
+						padding: SIZES.padding,
+						fontSize: 14
+					}}
 				>
+					<PrinterOutlined />
 					Роздрукувати
-				</Button>
+				</Link>
 			</Row>
 			<Table
 				columns={columns}

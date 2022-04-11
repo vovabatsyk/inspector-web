@@ -1,7 +1,7 @@
 import { Row, Collapse, Col, Form } from 'antd'
-import { COLORS, SIZES } from '../../constants/theme'
-import { SearchViolation } from '../../components/SearchViolation'
-import { PayViolation } from '../../components/PayViolation'
+import { COLORS, SIZES } from '../constants/theme'
+import { SearchViolation } from '../components/SearchViolation'
+import { PayViolation } from '../components/PayViolation'
 import { FC } from 'react'
 
 type Props = {}
