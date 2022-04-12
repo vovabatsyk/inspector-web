@@ -48,7 +48,7 @@ export const AboutInspection: FC = (props: Props) => {
 				</Col>
 				<Col style={{ margin: SIZES.margin }}>
 					<Divider orientation='left'>
-						Положення Управління безпеки
+						Положення про управління безпеки
 					</Divider>
 					<List
 						size='small'
