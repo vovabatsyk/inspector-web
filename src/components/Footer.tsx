@@ -1,10 +1,10 @@
-import { Col, Layout, Row, Image, Button } from 'antd'
-import { SIZES } from '../../constants/theme'
-import { routesName } from '../../routes'
-import { Link, useNavigate } from 'react-router-dom'
-import DepartmentLogo from '../../assets/logo.png'
-import LMRLogo from '../../assets/lmr_logo.png'
-import { styles } from '../../constants/style'
+import { Col, Layout, Row, Image } from 'antd'
+import { SIZES } from '../constants/theme'
+import { routesName } from '../routes'
+import { Link } from 'react-router-dom'
+import DepartmentLogo from '../assets/logo.png'
+import LMRLogo from '../assets/lmr_logo.png'
+import { styles } from '../constants/style'
 
 type Props = {}
 
@@ -28,14 +28,14 @@ export const Footer = (props: Props) => {
 							</p>
 							<p>Управління безпеки Львівської міської ради</p>
 							<p>
-								<small>Адреса: вул. Зелена 9</small>
+								<small>Адреса: 79008, вул. Зелена 9</small>
 							</p>
 							<p>
-								<small>Телефон: (068) 000-00-00</small>
+								<small>Телефон: (063) 486-64-48</small>
 							</p>
 							<p>
 								<small>
-									Електронна пошта: parkingcontrol@gmail.com
+									Електронна пошта: dep.secur.city@gmail.com
 								</small>
 							</p>
 						</Col>

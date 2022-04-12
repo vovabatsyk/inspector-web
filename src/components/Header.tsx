@@ -1,10 +1,10 @@
 import { Button, Col, Image, Layout, Menu, Row } from 'antd'
 import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { COLORS, SIZES } from '../../constants/theme'
-import { routesName } from '../../routes'
-import DepartmentLogo from '../../assets/logo.png'
-import { styles } from '../../constants/style'
+import { COLORS, SIZES } from '../constants/theme'
+import { routesName } from '../routes'
+import DepartmentLogo from '../assets/logo.png'
+import { styles } from '../constants/style'
 import {
 	MenuFoldOutlined,
 	MenuUnfoldOutlined
