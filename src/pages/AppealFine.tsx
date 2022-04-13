@@ -17,6 +17,7 @@ export const AppealFinePage: FC = () => {
 				<Col span={22}>
 					<Row justify='space-around' align='middle'>
 						<Image
+							preview={false}
 							src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQETSsYbvk68jLmSw5XiX_STJjq8PgNZG-M2Q&usqp=CAU'
 							width={70}
 						/>
