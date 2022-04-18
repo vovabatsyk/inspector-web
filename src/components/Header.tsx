@@ -122,15 +122,15 @@ export const Header: FC = (props: Props) => {
 					<Menu.Item key={1}>
 						<Link to={routesName.HOME_PAGE}>Головна</Link>
 					</Menu.Item>
-					<Menu.SubMenu key={2} title='Про інспекцію'>
+					<Menu.SubMenu key={2} title='Про паркуваня'>
 						<Menu.Item key={21}>
 							<Link to={routesName.ABOUT_INSPECTION}>
-								Про інспекцію
+								Про відділ інспекторів з паркування
 							</Link>
 						</Menu.Item>
 						<Menu.Item key={22}>
 							<Link to={routesName.INSPECTION_SCHEDULE}>
-								Графік роботи інспекції
+								Графік роботи відділу
 							</Link>
 						</Menu.Item>
 						<Menu.Item key={23}>
