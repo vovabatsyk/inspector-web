@@ -1,7 +1,6 @@
-import { Row, Card, Form, Input, Button } from 'antd'
+import { Row, Card, Input } from 'antd'
 import { FC, useState } from 'react'
 import { COLORS, SIZES, STYLES } from '../constants/theme'
-import { SearchOutlined } from '@ant-design/icons'
 
 const { Search } = Input
 

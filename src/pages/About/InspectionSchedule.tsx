@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Row, Image, Col, List } from 'antd'
+import { Row, Image, Col, List } from 'antd'
 import ParkingLogo from '../../assets/parking.jpg'
 import { COLORS, SIZES } from '../../constants/theme'
 import { MotionComponent } from '../../components/ui/MotionComponent'
