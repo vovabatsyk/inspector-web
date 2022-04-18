@@ -1,12 +1,13 @@
 import { Layout } from 'antd'
 import React from 'react'
+import { MotionComponent } from '../../components/ui/MotionComponent'
 
 type Props = {}
 
 export const Legislation = (props: Props) => {
 	return (
-		<Layout.Content>
+		<MotionComponent>
 			<p>...</p>
-		</Layout.Content>
+		</MotionComponent>
 	)
 }

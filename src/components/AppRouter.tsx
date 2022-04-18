@@ -1,24 +1,33 @@
 import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import {
+	Routes,
+	Route,
+	Navigate,
+	useLocation
+} from 'react-router-dom'
 import { NewsPage } from '../pages/News'
 import { DetailNews } from '../pages/News/DetailNews'
 import { publicRoutes, routesName } from '../routes'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export const AppRouter = () => {
+	const location = useLocation()
 	return (
-		<Routes>
-			{publicRoutes.map(route => (
-				<Route
-					path={route.path}
-					element={<route.element />}
-					key={route.path}
-				/>
-			))}
-			<Route path={routesName.NEWS_PAGE}>
-				<Route index element={<NewsPage />} />
-				<Route path=':id' element={<DetailNews />} />
-			</Route>
-			<Route path='*' element={<Navigate to='/' replace />} />
-		</Routes>
+		<AnimatePresence>
+			<Routes location={location} key={location.pathname}>
+				{publicRoutes.map(route => (
+					<Route
+						path={route.path}
+						element={<route.element />}
+						key={route.path}
+					/>
+				))}
+				<Route path={routesName.NEWS_PAGE}>
+					<Route index element={<NewsPage />} />
+					<Route path=':id' element={<DetailNews />} />
+				</Route>
+				<Route path='*' element={<Navigate to='/' replace />} />
+			</Routes>
+		</AnimatePresence>
 	)
 }

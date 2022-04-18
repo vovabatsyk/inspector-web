@@ -6,6 +6,7 @@ import { SIZES } from '../../constants/theme'
 import { LinkUri } from '../../components/ui/LinkUri'
 import Parking from '../../assets/parking.jpg'
 import ParkingEva from '../../assets/parking-eva.jpg'
+import { MotionComponent } from '../../components/ui/MotionComponent'
 
 type Props = {}
 const data = [
@@ -21,7 +22,7 @@ const data = [
 
 export const AboutInspection: FC = (props: Props) => {
 	return (
-		<Layout.Content>
+		<MotionComponent>
 			<WrapContainer>
 				<Col>
 					<Row justify='center'>
@@ -83,6 +84,6 @@ export const AboutInspection: FC = (props: Props) => {
 				</p>
 				<LinkUri uri='https://zakon.rada.gov.ua/laws/show/2262-19#n45' />
 			</WrapContainer>
-		</Layout.Content>
+		</MotionComponent>
 	)
 }
