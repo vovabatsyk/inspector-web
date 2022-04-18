@@ -1,17 +1,33 @@
-import { Row, Collapse, Col } from 'antd'
+import { Row, Collapse, Col, Alert } from 'antd'
 import { COLORS, SIZES } from '../constants/theme'
 import { SearchViolation } from '../components/SearchViolation'
 import { PayViolation } from '../components/PayViolation'
 import { MotionComponent } from '../components/ui/MotionComponent'
 import { FC } from 'react'
+import { useTypedSelector } from '../hooks/useTypedSelector'
+import { INotice } from '../store/reducers/notice/types'
 
 type Props = {}
 
 export const HomePage: FC = (props: Props) => {
 	const { Panel } = Collapse
+	const { notices } = useTypedSelector(state => state.noticeReducer)
 
 	return (
 		<MotionComponent>
+			{notices.length > 1 &&
+				notices.map((alert: INotice, index) =>
+					alert.description ? (
+						<Alert
+							message={alert.title}
+							description={alert.description}
+							type='warning'
+							closable
+							key={index}
+						/>
+					) : null
+				)}
+
 			<SearchViolation />
 			<PayViolation />
 			<Col

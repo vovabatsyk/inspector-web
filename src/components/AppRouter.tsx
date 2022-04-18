@@ -8,7 +8,7 @@ import {
 import { NewsPage } from '../pages/News'
 import { DetailNews } from '../pages/News/DetailNews'
 import { publicRoutes, routesName } from '../routes'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
 export const AppRouter = () => {
 	const location = useLocation()

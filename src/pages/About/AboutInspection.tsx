@@ -1,4 +1,4 @@
-import { Col, Image, Layout, List, Row, Divider } from 'antd'
+import { Col, Image, List, Row, Divider } from 'antd'
 import React, { FC } from 'react'
 import { WrapContainer } from '../../components/ui/WrapContainer'
 import LMR from '../../assets/lmr.jpg'
