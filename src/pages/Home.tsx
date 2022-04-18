@@ -4,36 +4,29 @@ import { SearchViolation } from '../components/SearchViolation'
 import { PayViolation } from '../components/PayViolation'
 import { MotionComponent } from '../components/ui/MotionComponent'
 import { FC } from 'react'
+import { useTypedSelector } from '../hooks/useTypedSelector'
+import { INotice } from '../store/reducers/notice/types'
 
 type Props = {}
 
-const warning_messages = [
-	{
-		title: 'Оплата!',
-		description:
-			'Звертаємо вашу увагу на те, що квитанції про оплату ,ви можете надсилати на електронну пошту ubm.lviv@ukr.net, а також за допомогою сервісів Телеграм та Вайбер за номером тел:+380634866448'
-	},
-	{
-		title: '',
-		description:
-			"Прийом заяв та зверненнь громадян проводиться виключно у Центрах надання адміністративних послуг. Необхідну інформацію можете отримати за телефоном +380634866448 та +380634866393, у робочий час з понеділка по четвер з 8:00 до 17:00, п'ятниця з 8:00 та згідно табеля-календаря, затвердженого розпорядженням міського голови від 06.12.2019 року №860, (обідня перерва з 12:00 по 13:00)."
-	}
-]
-
 export const HomePage: FC = (props: Props) => {
 	const { Panel } = Collapse
+	const { notices } = useTypedSelector(state => state.noticeReducer)
 
 	return (
 		<MotionComponent>
-			{warning_messages &&
-				warning_messages.map((alert, index) => (
-					<Alert
-						message={alert.title}
-						description={alert.description}
-						type='warning'
-						closable
-					/>
-				))}
+			{notices.length > 1 &&
+				notices.map((alert: INotice, index) =>
+					alert.description ? (
+						<Alert
+							message={alert.title}
+							description={alert.description}
+							type='warning'
+							closable
+							key={index}
+						/>
+					) : null
+				)}
 
 			<SearchViolation />
 			<PayViolation />
