@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
-import { Layout, Row, Col, Image } from 'antd'
+import { Row, Col, Image } from 'antd'
 import { SIZES } from '../constants/theme'
 import { WrapContainer } from '../components/ui/WrapContainer'
 import { Link } from 'react-router-dom'
+import { MotionComponent } from '../components/ui/MotionComponent'
 
 export const AppealFinePage: FC = () => {
 	return (
-		<Layout.Content>
+		<MotionComponent>
 			<Row
 				style={{
 					padding: SIZES.padding,
@@ -93,6 +94,6 @@ export const AppealFinePage: FC = () => {
 					</ol>
 				</Col>
 			</WrapContainer>
-		</Layout.Content>
+		</MotionComponent>
 	)
 }

@@ -2,6 +2,7 @@ import { Row, Collapse, Col } from 'antd'
 import { COLORS, SIZES } from '../constants/theme'
 import { SearchViolation } from '../components/SearchViolation'
 import { PayViolation } from '../components/PayViolation'
+import { MotionComponent } from '../components/ui/MotionComponent'
 import { FC } from 'react'
 
 type Props = {}
@@ -10,7 +11,7 @@ export const HomePage: FC = (props: Props) => {
 	const { Panel } = Collapse
 
 	return (
-		<>
+		<MotionComponent>
 			<SearchViolation />
 			<PayViolation />
 			<Col
@@ -115,6 +116,6 @@ export const HomePage: FC = (props: Props) => {
 					</Panel>
 				</Collapse>
 			</Col>
-		</>
+		</MotionComponent>
 	)
 }
