@@ -1,6 +1,6 @@
 import { AppDispatch } from './../../index'
 import { SetNoticeAction, NoticeActionEnum, INotice, SetIsLoadingAction, SetErrorAction } from './types'
-import axios from 'axios'
+import NoticeService from '../../../api/NoticeService'
 
 export const NoticeActionCreator = {
     setNotice: (notice: INotice): SetNoticeAction => ({ type: NoticeActionEnum.SET_NOTICE, payload: notice }),
@@ -10,7 +10,7 @@ export const NoticeActionCreator = {
     getNotice: () => async (dispatch: AppDispatch) => {
         try {
             dispatch(NoticeActionCreator.setIsLoading(true))
-            const mockNotice = await axios.get<INotice[]>('./data/notices.json')
+            const mockNotice = await NoticeService.getNotice()
             mockNotice.data.forEach(notice => dispatch(NoticeActionCreator.setNotice(notice)))
             dispatch(NoticeActionCreator.setIsLoading(false))
         } catch (error) {
