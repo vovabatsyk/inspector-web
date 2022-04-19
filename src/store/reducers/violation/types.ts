@@ -1,4 +1,10 @@
-export interface IViolationState {
+export interface ViolationState {
+    violation: Violation,
+    isLoading: boolean,
+    error: string
+}
+
+export interface Violation {
     violation_number: string,
     date: string,
     car_mark: string,
@@ -8,13 +14,25 @@ export interface IViolationState {
     photos: string[]
 }
 
+
 export enum ViolationActionEnum {
-    SET_VIOLATION = 'SET_VIOLATION'
+    SET_VIOLATION = 'SET_VIOLATION',
+    SET_IS_LOADING = 'SET_IS_LOADING',
+    SET_ERROR = 'SET_ERROR'
 }
 
-export interface ISetViolationAction {
+export interface SetViolationAction {
     type: ViolationActionEnum.SET_VIOLATION
-    payload: IViolationState
+    payload: Violation
+}
+export interface SetIsLoadingAction {
+    type: ViolationActionEnum.SET_IS_LOADING
+    payload: boolean
 }
 
-export type ViolationAction = ISetViolationAction
+export interface SetErrorAction {
+    type: ViolationActionEnum.SET_ERROR
+    payload: string
+}
+
+export type ViolationAction = SetViolationAction | SetIsLoadingAction | SetErrorAction

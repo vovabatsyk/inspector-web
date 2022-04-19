@@ -1,33 +1,45 @@
-import { NoticeActionCreator } from './../notice/action-creators'
 import { AppDispatch } from "../.."
-import { ISetViolationAction, IViolationState, ViolationActionEnum } from "./types"
+import { SetErrorAction, SetIsLoadingAction, SetViolationAction, Violation, ViolationActionEnum } from "./types"
 import ViolationService from '../../../api/ViolationService'
 import { message } from 'antd'
 
 export const ViolationActionCreators = {
-    setViolation: (violation: IViolationState): ISetViolationAction => ({
+    setViolation: (violation: Violation): SetViolationAction => ({
         type: ViolationActionEnum.SET_VIOLATION,
         payload: violation
     }),
+    setIsLoading: (isLoading: boolean): SetIsLoadingAction => ({ type: ViolationActionEnum.SET_IS_LOADING, payload: isLoading }),
+    setError: (error: string): SetErrorAction => ({ type: ViolationActionEnum.SET_ERROR, payload: error }),
 
-    getViolation: (carNumber: string) => async (dispatch: AppDispatch) => {
+
+    getViolation: (number: string) => async (dispatch: AppDispatch) => {
         try {
-            dispatch(NoticeActionCreator.setIsLoading(true))
-            const mockViolation = await (await ViolationService.getViolation()).data
+            dispatch(ViolationActionCreators.setIsLoading(true))
+            console.log('true')
 
-            const violation = mockViolation.find(v => v.car_number === carNumber)
+            dispatch(ViolationActionCreators.setError(''))
+            const mockViolation = await ViolationService.getViolation()
+
+            const violation = mockViolation.data.find(v => v.car_number === number)
+
+            dispatch(ViolationActionCreators.setIsLoading(false))
+            console.log('false');
+
+
             if (violation) {
-                console.log(violation)
+                    dispatch(ViolationActionCreators.setViolation(violation))
+                } else {
+                    dispatch(ViolationActionCreators.setError('Not found'))
+                    message.error('Порушення не знайдено!')
+                }
 
-                dispatch(ViolationActionCreators.setViolation(violation))
-            } else {
-                message.error('Not found')
-            }
 
-            dispatch(NoticeActionCreator.setIsLoading(false))
+
 
         } catch (error) {
-            dispatch(NoticeActionCreator.setError(error as string))
+            dispatch(ViolationActionCreators.setError(error as string))
         }
+
+
     }
 }

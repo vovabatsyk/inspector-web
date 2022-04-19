@@ -1,9 +1,14 @@
-import { Row, Card, Input } from 'antd'
-import { FC, useState } from 'react'
+import { Row, Card, Input, Form, Button, InputNumber } from 'antd'
+import { FC, useEffect, useState } from 'react'
 import { COLORS, SIZES, STYLES } from '../constants/theme'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import { ViolationModal } from './ViolationModal'
+import {
+	AuditOutlined,
+	CarOutlined,
+	FileSearchOutlined
+} from '@ant-design/icons'
 
 export const SearchViolation: FC = () => {
 	const { Search } = Input
@@ -15,12 +20,34 @@ export const SearchViolation: FC = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false)
 
 	const { getViolation } = useActions()
+	const { error } = useTypedSelector(state => state.violationReducer)
 
-	const violation = useTypedSelector(state => state.violationReducer)
+	const searchCarNumber = async () => {
+		await getViolation(carNumber)
 
-	const searchCarNumber = () => {
-		getViolation(carNumber)
+		console.log('error', error)
+
 		setViolationIsAvailable(true)
+		setCarNumber('')
+	}
+
+	// useEffect(() => {
+	// 	getViolation(carNumber)
+	// }, [carNumber])
+
+	const [form] = Form.useForm()
+	const [, forceUpdate] = useState({})
+
+	useEffect(() => {
+		forceUpdate({})
+	}, [])
+
+	const onFinish = (values: any) => {
+		console.log('Finish:', values)
+		getViolation(values.carNumber)
+		console.log('error', error)
+
+		setIsModalVisible(true)
 	}
 
 	return (
@@ -47,11 +74,68 @@ export const SearchViolation: FC = () => {
 				</Row>
 
 				<Row justify='center' style={{ marginTop: SIZES.margin }}>
-					{!isViolationAvailable ? (
+					<Form
+						form={form}
+						name='horizontal_search'
+						layout='inline'
+						onFinish={onFinish}
+					>
+						<Form.Item
+							name='carNumber'
+							rules={[
+								{
+									required: true,
+									message: 'Введіть номерний знак авто!'
+								}
+							]}
+						>
+							<Input
+								prefix={
+									<CarOutlined className='site-form-item-icon' />
+								}
+								placeholder='номерний знак авто'
+							/>
+						</Form.Item>
+						<Form.Item
+							name='vioLationNumber'
+							rules={[
+								{
+									required: true,
+									message: 'Введіть номер повідомлення/постанови!'
+								}
+							]}
+						>
+							<Input
+								prefix={
+									<AuditOutlined className='site-form-item-icon' />
+								}
+								placeholder='номер повідомлення/постанови'
+								type='number'
+								min={0}
+							/>
+						</Form.Item>
+						<Form.Item shouldUpdate>
+							{() => (
+								<Button
+									type='primary'
+									htmlType='submit'
+									disabled={
+										!form.isFieldsTouched(true) ||
+										!!form
+											.getFieldsError()
+											.filter(({ errors }) => errors.length).length
+									}
+								>
+									<FileSearchOutlined />
+								</Button>
+							)}
+						</Form.Item>
+					</Form>
+
+					{/* {!isViolationAvailable ? (
 						<Search
 							addonBefore='ДНЗ'
 							placeholder='номерний знак'
-							allowClear
 							onSearch={searchCarNumber}
 							style={{ maxWidth: 304 }}
 							value={carNumber}
@@ -63,16 +147,16 @@ export const SearchViolation: FC = () => {
 							addonBefore='ЛВ'
 							placeholder='номер повідомлення'
 							type='number'
-							allowClear
 							value={violationNumber}
 							style={{ maxWidth: 304 }}
 							onChange={e => setViolationNumber(e.target.value)}
 							onSearch={() => {
 								setIsModalVisible(true)
 								setViolationIsAvailable(false)
+								setViolationNumber('')
 							}}
 						/>
-					)}
+					)} */}
 				</Row>
 			</Card>
 			<ViolationModal
