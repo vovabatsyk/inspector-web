@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import {
 	Modal,
 	Button,
@@ -10,46 +10,31 @@ import {
 } from 'antd'
 import { WrapContainer } from './ui/WrapContainer'
 import { COLORS, SIZES } from '../constants/theme'
-import { useTypedSelector } from '../hooks/useTypedSelector'
-import { useActions } from '../hooks/useActions'
-import { Violation } from '../store/reducers/violation/types'
+import { IViolation } from '../models/IViolation'
 
 type Props = {
 	isModalVisible: boolean
 	setIsModalVisible(isClose: boolean): void
-}
-
-const inV: Violation = {
-	address: '',
-	car_mark: '',
-	car_model: '',
-	car_number: '',
-	date: '',
-	photos: [],
-	violation_number: ''
+	violation: IViolation
+	isLoading: boolean
 }
 
 export const ViolationModal: FC<Props> = ({
 	isModalVisible,
-	setIsModalVisible
+	setIsModalVisible,
+	violation,
+	isLoading
 }) => {
 	const { Text } = Typography
 
-	const { violation, error, isLoading } = useTypedSelector(
-		state => state.violationReducer
-	)
-
-	const { setViolation } = useActions()
-
 	const closeModal = () => {
-		setViolation(inV)
 		setIsModalVisible(false)
 	}
 
 	return (
 		<Modal
-			title={`Інформація про порушення № Л${violation.violation_number}`}
-			visible={error ? false : isModalVisible}
+			title='Інформація про порушення'
+			visible={isModalVisible}
 			onCancel={closeModal}
 			width={'90%'}
 			centered
@@ -60,12 +45,15 @@ export const ViolationModal: FC<Props> = ({
 			]}
 			style={{ backgroundColor: COLORS.containerBG }}
 		>
-			{isLoading ? (
-				<Skeleton active />
-			) : (
+			{isLoading && <Skeleton active />}
+			{violation && (
 				<>
 					<WrapContainer>
 						<Space direction='vertical'>
+							<Text type='secondary'>
+								Номер повідомлення/постанови:{' '}
+								<Text>ЛВ {violation.violation_number}</Text>
+							</Text>
 							<Text type='secondary'>
 								Дата порушення: <Text>{violation.date}</Text>
 							</Text>
@@ -86,14 +74,15 @@ export const ViolationModal: FC<Props> = ({
 
 					<Row justify='space-around' align='middle'>
 						<Image.PreviewGroup>
-							{violation.photos.map((photo: string, index) => (
-								<Image
-									width={250}
-									style={{ margin: SIZES.margin }}
-									src={photo}
-									key={index}
-								/>
-							))}
+							{violation.photos &&
+								violation.photos.map((photo: string, index) => (
+									<Image
+										width={250}
+										style={{ margin: SIZES.margin }}
+										src={photo}
+										key={index}
+									/>
+								))}
 						</Image.PreviewGroup>
 					</Row>
 				</>

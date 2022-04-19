@@ -1,20 +1,31 @@
-import { Row, Collapse, Col, Alert } from 'antd'
+import { Row, Collapse, Col, Alert, message } from 'antd'
 import { COLORS, SIZES } from '../constants/theme'
 import { SearchViolation } from '../components/SearchViolation'
 import { PayViolation } from '../components/PayViolation'
 import { MotionComponent } from '../components/ui/MotionComponent'
-import { FC } from 'react'
-import { useTypedSelector } from '../hooks/useTypedSelector'
-import { INotice } from '../store/reducers/notice/types'
+import { FC, useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { INotice } from '../models/INotice'
+import { fetchNotices } from '../store/reducers/ActionCreators'
 
 type Props = {}
 
 export const HomePage: FC = (props: Props) => {
+	const dispatch = useAppDispatch()
+	const { notices, error } = useAppSelector(
+		state => state.noticeReducer
+	)
+
 	const { Panel } = Collapse
-	const { notices } = useTypedSelector(state => state.noticeReducer)
+
+	useEffect(() => {
+		dispatch(fetchNotices())
+	}, [])
 
 	return (
 		<MotionComponent>
+			{/* {isLoading && message.loading('Завантаження...')} */}
+			{error && message.error(error)}
 			{notices.length > 1 &&
 				notices.map((alert: INotice, index) =>
 					alert.description ? (

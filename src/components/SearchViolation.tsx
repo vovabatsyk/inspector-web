@@ -1,39 +1,24 @@
-import { Row, Card, Input, Form, Button, InputNumber } from 'antd'
+import { Row, Card, Input, Form, Button, notification } from 'antd'
 import { FC, useEffect, useState } from 'react'
 import { COLORS, SIZES, STYLES } from '../constants/theme'
-import { useActions } from '../hooks/useActions'
-import { useTypedSelector } from '../hooks/useTypedSelector'
 import { ViolationModal } from './ViolationModal'
 import {
 	AuditOutlined,
 	CarOutlined,
 	FileSearchOutlined
 } from '@ant-design/icons'
+import { violationApi } from '../services/ViolationService'
+import { IViolation } from '../models/IViolation'
 
 export const SearchViolation: FC = () => {
-	const { Search } = Input
+	const { data: violations, isLoading } =
+		violationApi.useFetchAllViolationsQuery(10)
 
-	const [isViolationAvailable, setViolationIsAvailable] =
-		useState(false)
-	const [carNumber, setCarNumber] = useState('')
-	const [violationNumber, setViolationNumber] = useState('')
 	const [isModalVisible, setIsModalVisible] = useState(false)
 
-	const { getViolation } = useActions()
-	const { error } = useTypedSelector(state => state.violationReducer)
-
-	const searchCarNumber = async () => {
-		await getViolation(carNumber)
-
-		console.log('error', error)
-
-		setViolationIsAvailable(true)
-		setCarNumber('')
-	}
-
-	// useEffect(() => {
-	// 	getViolation(carNumber)
-	// }, [carNumber])
+	const [violation, setViolation] = useState({} as IViolation)
+	const [carNumber, setCarNumber] = useState('')
+	const [violationNumber, setViolationNumber] = useState('')
 
 	const [form] = Form.useForm()
 	const [, forceUpdate] = useState({})
@@ -42,12 +27,28 @@ export const SearchViolation: FC = () => {
 		forceUpdate({})
 	}, [])
 
-	const onFinish = (values: any) => {
-		console.log('Finish:', values)
-		getViolation(values.carNumber)
-		console.log('error', error)
+	const onFinish = () => {
+		if (violations !== undefined) {
+			const founded = violations.find(
+				(v: IViolation) =>
+					v.car_number === carNumber &&
+					v.violation_number === violationNumber
+			)
 
-		setIsModalVisible(true)
+			if (founded) {
+				setViolation(founded)
+				setIsModalVisible(true)
+			} else {
+				notification['error']({
+					message: 'Перевірити авто не вдалося!',
+					description:
+						'Перевірте чи правильно введений номерний знак авто та номер повідомлення/постанови.',
+					duration: 10
+				})
+			}
+		}
+		setCarNumber('')
+		setViolationNumber('')
 	}
 
 	return (
@@ -81,7 +82,6 @@ export const SearchViolation: FC = () => {
 						onFinish={onFinish}
 					>
 						<Form.Item
-							name='carNumber'
 							rules={[
 								{
 									required: true,
@@ -94,10 +94,13 @@ export const SearchViolation: FC = () => {
 									<CarOutlined className='site-form-item-icon' />
 								}
 								placeholder='номерний знак авто'
+								value={carNumber}
+								onChange={e =>
+									setCarNumber(e.target.value.toUpperCase())
+								}
 							/>
 						</Form.Item>
 						<Form.Item
-							name='vioLationNumber'
 							rules={[
 								{
 									required: true,
@@ -112,6 +115,8 @@ export const SearchViolation: FC = () => {
 								placeholder='номер повідомлення/постанови'
 								type='number'
 								min={0}
+								value={violationNumber}
+								onChange={e => setViolationNumber(e.target.value)}
 							/>
 						</Form.Item>
 						<Form.Item shouldUpdate>
@@ -160,8 +165,10 @@ export const SearchViolation: FC = () => {
 				</Row>
 			</Card>
 			<ViolationModal
+				violation={violation}
 				isModalVisible={isModalVisible}
 				setIsModalVisible={setIsModalVisible}
+				isLoading={isLoading}
 			/>
 		</Row>
 	)
