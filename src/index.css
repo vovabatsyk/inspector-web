@@ -16,8 +16,30 @@ code {
 p {
   margin: 0;
 }
+.mobile-menu {
+  display: none;
+}
+
+.ant-menu-item:hover {
+  background-color: #071f32 !important;
+}
 @media (max-width: 700px) {
-  .menu {
+  /* .desktop-menu {
     display: none;
+    }
+    
+    .mobile-menu {
+      display: block;
+    }
+    
+    */ h3 {
+      font-size: 12px;
+    }
+    
+    h2 {
+      font-size: 14px;
   }
+.ant-table-cell {
+  font-size: 10px;
+}
 }
