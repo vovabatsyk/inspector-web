@@ -1,0 +1,65 @@
+[
+    {
+        "id": "1",
+        "violation_number": "0000",
+        "date": "22.04.2022 12:14",
+        "car_mark": "Audi",
+        "car_model": "A6",
+        "car_number": "BC0000BC",
+        "address": "пр. Свободи 20",
+        "photos": [
+            "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-honda-civic-sedan-1558453497.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=480:*",
+            "https://im.rediff.com/money/2017/dec/07car1.jpg",
+            "https://stimg.cardekho.com/images/carexteriorimages/930x620/Lamborghini/Aventador/6721/Lamborghini-Aventador-SVJ/1621849426405/front-left-side-47.jpg",
+            "https://mclaren.scene7.com/is/image/mclaren/McLaren_GT_Adventures_Dubai_01:crop-16x9?wid=1980&hei=1114"
+        ]
+    },
+    {
+        "id": "2",
+        "violation_number": "0001",
+        "date": "22.04.2022 10:04",
+        "car_mark": "Volkswagen",
+        "car_model": "Passat",
+        "car_number": "BC0000BC",
+        "address": "вул. Гавришкевича 6",
+        "photos": [
+            "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-honda-civic-sedan-1558453497.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=480:*",
+            "https://im.rediff.com/money/2017/dec/07car1.jpg",
+            "https://stimg.cardekho.com/images/carexteriorimages/930x620/Lamborghini/Aventador/6721/Lamborghini-Aventador-SVJ/1621849426405/front-left-side-47.jpg",
+            "https://mclaren.scene7.com/is/image/mclaren/McLaren_GT_Adventures_Dubai_01:crop-16x9?wid=1980&hei=1114",
+            "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-honda-civic-sedan-1558453497.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=480:*",
+            "https://im.rediff.com/money/2017/dec/07car1.jpg",
+            "https://stimg.cardekho.com/images/carexteriorimages/930x620/Lamborghini/Aventador/6721/Lamborghini-Aventador-SVJ/1621849426405/front-left-side-47.jpg"
+        ]
+    },
+    {
+        "id": "3",
+        "violation_number": "0002",
+        "date": "22.04.2022 13:10",
+        "car_mark": "Audi",
+        "car_model": "A3",
+        "car_number": "BC1111BC",
+        "address": "пр. Свободи 25",
+        "photos": [
+            "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-honda-civic-sedan-1558453497.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=480:*",
+            "https://im.rediff.com/money/2017/dec/07car1.jpg",
+            "https://stimg.cardekho.com/images/carexteriorimages/930x620/Lamborghini/Aventador/6721/Lamborghini-Aventador-SVJ/1621849426405/front-left-side-47.jpg",
+            "https://mclaren.scene7.com/is/image/mclaren/McLaren_GT_Adventures_Dubai_01:crop-16x9?wid=1980&hei=1114"
+        ]
+    },
+    {
+        "id": "4",
+        "violation_number": "0003",
+        "date": "22.04.2022 13:10",
+        "car_mark": "Audi",
+        "car_model": "A3",
+        "car_number": "BC2222BC",
+        "address": "пр. Свободи 25",
+        "photos": [
+            "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-honda-civic-sedan-1558453497.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=480:*",
+            "https://im.rediff.com/money/2017/dec/07car1.jpg",
+            "https://stimg.cardekho.com/images/carexteriorimages/930x620/Lamborghini/Aventador/6721/Lamborghini-Aventador-SVJ/1621849426405/front-left-side-47.jpg",
+            "https://mclaren.scene7.com/is/image/mclaren/McLaren_GT_Adventures_Dubai_01:crop-16x9?wid=1980&hei=1114"
+        ]
+    }
+]

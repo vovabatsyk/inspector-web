@@ -1,3 +1,4 @@
 import noticeReducer from "./notice"
+import violationReducer from './violation'
 
-export default { noticeReducer }
+export default { noticeReducer, violationReducer }

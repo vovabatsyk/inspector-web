@@ -14,7 +14,7 @@ export const NoticeActionCreator = {
             mockNotice.data.forEach(notice => dispatch(NoticeActionCreator.setNotice(notice)))
             dispatch(NoticeActionCreator.setIsLoading(false))
         } catch (error) {
-            dispatch(NoticeActionCreator.setError('Помилка сервера'))
+            dispatch(NoticeActionCreator.setError(error as string))
         }
     }
 }
