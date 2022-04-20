@@ -1,4 +1,4 @@
-import { INotice } from './../../models/INotice'
+import { INotice } from '../../models/INotice'
 // import { AppDispatch } from './../store'
 import axios from 'axios'
 // import { noticeSlice } from './NoticeSlice'
