@@ -1,6 +1,7 @@
 import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { noticesApi } from '../services/NoticeService'
 import { paymentApi } from '../services/PaymentService'
+import { postsApi } from '../services/PostApi'
 import { questionApi } from '../services/QuestionService'
 import { violationApi } from '../services/ViolationService'
 
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
   [noticesApi.reducerPath]: noticesApi.reducer,
   [questionApi.reducerPath]: questionApi.reducer,
   [paymentApi.reducerPath]: paymentApi.reducer,
+  [postsApi.reducerPath]: postsApi.reducer,
 })
 
 export const setupStore = () => {
@@ -19,7 +21,8 @@ export const setupStore = () => {
         .concat(violationApi.middleware)
         .concat(noticesApi.middleware)
         .concat(questionApi.middleware)
-        .concat(paymentApi.middleware),
+        .concat(paymentApi.middleware)
+        .concat(postsApi.middleware),
   })
 }
 

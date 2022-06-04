@@ -1,4 +1,4 @@
-import { Table, Card, Row, List } from 'antd'
+import { Table, Card, Row, List, Skeleton } from 'antd'
 import { FC } from 'react'
 import { COLORS, SIZES, STYLES } from '../constants/theme'
 import { PrinterOutlined } from '@ant-design/icons'
@@ -7,7 +7,7 @@ import { MotionComponent } from '../components/ui/MotionComponent'
 import { useGetPaymentQuery } from '../services/PaymentService'
 
 export const PaymentDetails: FC = () => {
-  const { data: payment } = useGetPaymentQuery(1)
+  const { data: payment, isLoading } = useGetPaymentQuery(1)
 
   return (
     <MotionComponent>
@@ -40,6 +40,7 @@ export const PaymentDetails: FC = () => {
           </Link>
         </Row>
         <List size='large' bordered>
+          {isLoading && <Skeleton active />}
           <List.Item>Отримувач коштів - {payment?.recipient}</List.Item>
           <List.Item>Код отримувача (код за ЄДРПОУ) - {payment?.code}</List.Item>
           <List.Item>Банк отримувача - {payment?.bank}</List.Item>
