@@ -10,11 +10,18 @@ export const postsApi = createApi({
   }),
   endpoints: (build) => ({
     getPosts: build.query<IPost[], number>({
-      query: (limit = 4) => ({ url: '/posts' }),
+      query: (limit = 4, page = 1) => ({
+        url: '/posts',
+        params: {
+          page: page,
+          offset: limit,
+        },
+      }),
       providesTags: ['Posts', 'Post'],
     }),
     getPost: build.query<IPost, string>({
       query: (id) => `posts/${id}`,
+
       providesTags: ['Post'],
     }),
   }),

@@ -6,13 +6,12 @@ import { URL } from '../../constants/urls'
 import { useGetPostsQuery } from '../../services/PostApi'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
-import { routesName } from '../../routes'
 
 type Props = {}
 
 export const NewsPage: FC = (props: Props) => {
   const { Meta } = Card
-  const { data: posts, isLoading } = useGetPostsQuery(4)
+  const { data: posts, isLoading } = useGetPostsQuery(2)
   const navigate = useNavigate()
 
   return (
@@ -21,7 +20,7 @@ export const NewsPage: FC = (props: Props) => {
         <Row justify='space-around'>
           {isLoading && <Skeleton active />}
           {posts &&
-            posts.map((post, idx) => (
+            [...posts].reverse().map((post, idx) => (
               <Card
                 key={idx}
                 hoverable

@@ -1,4 +1,4 @@
-import { Table, Card, Row, List, Skeleton } from 'antd'
+import { Card, Row, List, Skeleton } from 'antd'
 import { FC } from 'react'
 import { COLORS, SIZES, STYLES } from '../constants/theme'
 import { PrinterOutlined } from '@ant-design/icons'
