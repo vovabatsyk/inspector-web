@@ -2,7 +2,7 @@ import { Card, Row, Skeleton } from 'antd'
 import React, { FC } from 'react'
 import { MotionComponent } from '../../components/ui/MotionComponent'
 import { COLORS, SIZES } from '../../constants/theme'
-import { URL } from '../../constants/urls'
+import { URL } from '../../url'
 import { useGetPostsQuery } from '../../services/PostApi'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
@@ -26,7 +26,7 @@ export const NewsPage: FC = (props: Props) => {
                 hoverable
                 onClick={() => navigate(`../${post.id}`)}
                 style={{ width: 300, margin: SIZES.margin }}
-                cover={<img alt='Image' src={`${URL.DEFAULT}/${post.image}`} />}
+                cover={<img alt={post.title} src={`${URL.DEFAULT}/${post.image}`} />}
               >
                 <Meta
                   title={post.title}

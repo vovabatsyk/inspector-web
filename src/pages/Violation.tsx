@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { SIZES } from '../constants/theme'
 import { IViolation } from '../models/IViolation'
 import { violationApi } from '../services/ViolationService'
-import { URL } from '../constants/urls'
+import { URL } from '../url'
 
 const { Text } = Typography
 

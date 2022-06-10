@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IPayment } from '../models/IPayment'
+import { URL } from '../url'
 
 export const paymentApi = createApi({
   reducerPath: 'paymentApi',
   tagTypes: ['Payment'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:5000/api/',
-    // baseUrl: 'http://localhost:3000/'
+    baseUrl: `${URL.DEFAULT}/api/`,
   }),
   endpoints: (build) => ({
     getPayment: build.query<IPayment, number>({

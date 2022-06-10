@@ -7,7 +7,7 @@ import { Card, PageHeader, Row, Skeleton } from 'antd'
 import moment from 'moment'
 import { COLORS, SIZES } from '../../constants/theme'
 import { ClockCircleOutlined } from '@ant-design/icons'
-import { URL } from '../../constants/urls'
+import { URL } from '../../url'
 
 type Props = {}
 

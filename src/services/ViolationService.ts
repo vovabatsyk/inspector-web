@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
+import { URL } from '../url'
 import { IViolation } from '../models/IViolation'
 import { IViolationImage } from '../models/IViolationImage'
 
 export const violationApi = createApi({
   reducerPath: 'violationApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${URL.DEFAULT}/api/` }),
   endpoints: (build) => ({
     fetchAllViolations: build.query<IViolation[], number>({
       query: (limit: number = 10) => ({
