@@ -7,29 +7,27 @@ import { routesName } from '../routes'
 import { WrapContainer } from './ui/WrapContainer'
 
 export const PayViolation: FC = () => {
-	const navigate = useNavigate()
-	return (
-		<WrapContainer>
-			<Col style={{ marginRight: SIZES.margin }}>
-				<CreditCardOutlined style={{ fontSize: 70 }} />
-			</Col>
-			<Col>
-				<h2>Сплатити штраф</h2>
-				<p style={{ marginBottom: SIZES.margin }}>
-					Якщо ви отримали квитанцію за неправильне паркування, ви
-					можете сплатити штраф онлайн
-				</p>
-				<Button
-					type='primary'
-					style={{ backgroundColor: COLORS.secondary }}
-					onClick={() => {
-						navigate(routesName.PAYMENT_DETAILS)
-						window.scrollTo({ behavior: 'smooth', top: 0 })
-					}}
-				>
-					Реквізити
-				</Button>
-			</Col>
-		</WrapContainer>
-	)
+  const navigate = useNavigate()
+  return (
+    <WrapContainer>
+      <Col style={{ marginRight: SIZES.margin }}>
+        <CreditCardOutlined style={{ fontSize: 70 }} />
+      </Col>
+      <Col>
+        <h2>Сплатити штраф</h2>
+        <p style={{ marginBottom: SIZES.margin }}>
+          Якщо ви отримали квитанцію за неправильне паркування, ви можете сплатити штраф онлайн
+        </p>
+        <Button
+          type='primary'
+          style={{ backgroundColor: COLORS.secondary }}
+          onClick={() => {
+            navigate(routesName.PAYMENT_DETAILS)
+          }}
+        >
+          Реквізити
+        </Button>
+      </Col>
+    </WrapContainer>
+  )
 }

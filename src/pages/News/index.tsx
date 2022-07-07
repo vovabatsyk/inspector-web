@@ -30,7 +30,7 @@ export const NewsPage: FC = (props: Props) => {
               >
                 <Meta
                   title={post.title}
-                  description={moment(post.createdAt).format('DD.MM.YYYY')}
+                  description={moment(post.createdAt).utcOffset('+0300').format('DD.MM.YYYY HH:mm')}
                 />
               </Card>
             ))}

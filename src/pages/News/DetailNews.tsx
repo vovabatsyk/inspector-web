@@ -42,10 +42,12 @@ export const DetailNews = (props: Props) => {
               cover={<img alt='example' src={`${URL.DEFAULT}/${post.image}`} />}
             >
               <Meta title={post.title} />
-              <div style={{ marginTop: SIZES.margin }}>{content}</div>
+              <div style={{ marginTop: SIZES.margin, textAlign: 'justify' }}>{content}</div>
               <small>
                 <ClockCircleOutlined />{' '}
-                {post?.createdAt ? moment(post?.createdAt).format('DD.MM.YYYY') : ''}
+                {post?.createdAt
+                  ? moment(post?.createdAt).utcOffset('+0300').format('DD.MM.YYYY HH:mm')
+                  : ''}
               </small>
             </Card>
           )}

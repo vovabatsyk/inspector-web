@@ -18,7 +18,6 @@ export const HomePage: FC = (props: Props) => {
 
   return (
     <MotionComponent>
-      {/* {isLoading && message.loading('Завантаження...')} */}
       {error && message.error(error)}
       {notices !== undefined &&
         notices.map((alert: INotice, index) =>

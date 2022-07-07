@@ -7,10 +7,11 @@ import { IViolation } from '../models/IViolation'
 import { useNavigate } from 'react-router-dom'
 
 export const SearchViolation: FC = () => {
-  const { data: violations } = violationApi.useFetchAllViolationsQuery(10)
+  const [carNumber, setCarNumber] = useState('')
+
+  const { data: violationsFounded } = violationApi.useGetViolationsByCarNumberQuery(carNumber)
   const navigate = useNavigate()
 
-  const [carNumber, setCarNumber] = useState('')
   const [violationNumber, setViolationNumber] = useState('')
 
   const [form] = Form.useForm()
@@ -21,8 +22,8 @@ export const SearchViolation: FC = () => {
   }, [])
 
   const onFinish = async () => {
-    if (violations !== undefined) {
-      const founded = violations.find(
+    if (violationsFounded !== undefined) {
+      const founded = violationsFounded.find(
         (v: IViolation) => v.car_number === carNumber && v.violation_number === violationNumber
       )
       if (founded) {
@@ -91,8 +92,8 @@ export const SearchViolation: FC = () => {
               <Input
                 prefix={<AuditOutlined className='site-form-item-icon' />}
                 placeholder='номер повідомлення/постанови'
-                type='number'
-                min={0}
+                // type='number'
+                // min={0}
                 value={violationNumber}
                 onChange={(e) => setViolationNumber(e.target.value)}
               />

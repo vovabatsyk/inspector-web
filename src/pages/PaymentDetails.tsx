@@ -1,23 +1,25 @@
-import { Card, Row, List, Skeleton } from 'antd'
+import { Card, Row, List, Skeleton, PageHeader } from 'antd'
 import { FC } from 'react'
 import { COLORS, SIZES, STYLES } from '../constants/theme'
 import { PrinterOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
 import { MotionComponent } from '../components/ui/MotionComponent'
 import { useGetPaymentQuery } from '../services/PaymentService'
+import { Link } from 'react-router-dom'
 
 export const PaymentDetails: FC = () => {
   const { data: payment, isLoading } = useGetPaymentQuery(1)
 
   return (
     <MotionComponent>
+      <PageHeader ghost={false} onBack={() => window.history.back()} title='Назад'></PageHeader>
+
       <Card
         title='Сплатити штраф'
         bordered={true}
         style={{
           boxShadow: STYLES.boxShadow,
           margin: SIZES.marginVertical,
-          marginTop: SIZES.marginVertical * 2,
+
           marginBottom: SIZES.marginVertical * 2,
           backgroundColor: COLORS.containerBG,
           fontSize: 10,
@@ -35,8 +37,7 @@ export const PaymentDetails: FC = () => {
               fontSize: 14,
             }}
           >
-            <PrinterOutlined />
-            Роздрукувати
+            <PrinterOutlined /> Роздрукувати
           </Link>
         </Row>
         <List size='large' bordered>

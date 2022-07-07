@@ -4,15 +4,22 @@ import { useParams } from 'react-router-dom'
 import { SIZES } from '../constants/theme'
 import { IViolation } from '../models/IViolation'
 import { violationApi } from '../services/ViolationService'
+import moment from 'moment'
 import { URL } from '../url'
 
 const { Text } = Typography
 
 export const Violation = () => {
   const { id } = useParams()
+  const [unipId, setUnipId] = useState(0)
 
   const { data } = violationApi.useGetViolationQuery(id!)
   const { data: images, isLoading } = violationApi.useGetViolationImagesQuery(id!)
+  const { data: unipImages, isLoading: isUnipLoading } =
+    violationApi.useGetViolationImagesUnipQuery(unipId)
+
+  const { data: unipPayment, isLoading: isUnipPaymentLoading } =
+    violationApi.useGetViolationPaymentUnipQuery(unipId)
 
   const [violation, setViolation] = useState<IViolation>({
     address: '',
@@ -21,10 +28,12 @@ export const Violation = () => {
     car_number: '',
     date: '',
     violation_number: '',
+    unip_id: 0,
   })
 
   useEffect(() => {
     if (data) {
+      setUnipId(data.unip_id)
       setViolation(data)
     }
   }, [data])
@@ -38,10 +47,15 @@ export const Violation = () => {
             <>
               <Space direction='vertical'>
                 <Text type='secondary'>
-                  Номер повідомлення/постанови: <Text>ЛВ {violation.violation_number}</Text>
+                  Номер повідомлення/постанови: <Text>{violation.violation_number}</Text>
                 </Text>
                 <Text type='secondary'>
-                  Дата порушення: <Text>{violation.date}</Text>
+                  Дата порушення:{' '}
+                  <Text>
+                    {moment(violation.date).format('DD.MM.YYYY') === 'Invalid date'
+                      ? violation.date
+                      : moment(violation.date).format('DD.MM.YYYY')}
+                  </Text>
                 </Text>
                 <Text type='secondary'>
                   Марка: <Text>{violation.car_mark}</Text>
@@ -53,8 +67,25 @@ export const Violation = () => {
                   Номерний знак: <Text>{violation.car_number}</Text>
                 </Text>
                 <Text type='secondary'>
-                  Адреса: <Text>м. Львів, {violation.address}</Text>
+                  Адреса: <Text>{violation.address}</Text>
                 </Text>
+                {/* {isUnipLoading && <Skeleton active />} */}
+                {unipPayment && (
+                  <>
+                    <Text type='secondary'>
+                      До оплати: <Text>{unipPayment.FineAmount} грн.</Text>
+                    </Text>
+                    <Text type='secondary'>
+                      Статус: <Text>{unipPayment.PaymentState}</Text>
+                    </Text>
+                    <Text type='secondary'>
+                      Оплачено:{' '}
+                      <Text>
+                        {unipPayment.PayedAmount === null ? '0' : unipPayment.PayedAmount} грн.
+                      </Text>
+                    </Text>
+                  </>
+                )}
               </Space>
               <Row justify='space-around' align='middle'>
                 <Image.PreviewGroup>
@@ -67,6 +98,17 @@ export const Violation = () => {
                           width={250}
                           style={{ margin: SIZES.margin }}
                           src={`${URL.DEFAULT}/${photo.image}`}
+                        />
+                      ))}
+                    {isUnipLoading && <Skeleton active />}
+                    {unipImages !== null &&
+                      unipImages &&
+                      unipImages.map((photo, index) => (
+                        <Image
+                          key={index}
+                          width={250}
+                          style={{ margin: SIZES.margin }}
+                          src={`data:image/png;base64, ${photo.PreviewBase64}`}
                         />
                       ))}
                   </>

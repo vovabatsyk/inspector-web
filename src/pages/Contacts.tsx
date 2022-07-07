@@ -13,7 +13,7 @@ export const ContactPage = (props: Props) => {
       <div style={{ backgroundColor: COLORS.containerBG }}>
         <Row justify='center'>
           <Card
-            style={{ minWidth: 240, maxWidth: 720, margin: 3 }}
+            style={{ minWidth: 240, maxWidth: 920, width: 800, margin: 3 }}
             cover={<img alt='Львівська міська рада' src={Contact} />}
           >
             <Meta
