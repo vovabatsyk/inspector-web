@@ -64,17 +64,20 @@ export const AppealFinePage: FC = () => {
 
           <ol>
             <li>
-              <Link to='/files/1.docx' target='_blank' download>
-                Заява на оскарження штрафу у зв'язку з наявністю пільг
+              <Link
+                to='/files/Заява_про_помилку_в_призначенні_платежу_та_виконання_зобовязання.docx'
+                target='_blank'
+                download
+              >
+                Заява про допущену помилку при оплаті штрафних санкцій
               </Link>
             </li>
             <li>
-              <Link to='/files/2.docx' target='_blank' download>
-                Заява на оскарження штрафу у зв'язку з оплатою паркування
-              </Link>
-            </li>
-            <li>
-              <Link to='/files/3.doc' target='_blank' download>
+              <Link
+                to='/files/Заява_згода_на_притягнення_до_адміністративної.docx'
+                target='_blank'
+                download
+              >
                 Згода на притягнення до адміністративної відповідальності
               </Link>
             </li>

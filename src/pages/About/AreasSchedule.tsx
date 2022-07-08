@@ -24,7 +24,7 @@ export const AreasSchedule = (props: Props) => {
     },
     {
       title: 'Порядок евакуації та вартість зберігання.',
-      link: 'https://www8.city-adm.lviv.ua/inteam/uhvaly.nsf/(SearchForWeb)/1431BE1CFBFD8CC5C225832F00360A38',
+      link: 'https://www8.city-adm.lviv.ua/Pool/Info/doclmr_1.NSF/(SearchForWeb)/0749AF818B7A7214C225885C002B813C?OpenDocument',
     },
   ]
   return (
